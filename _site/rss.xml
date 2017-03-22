@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>coyled.com</title>
+    <link>http://coyled.com/</link>
+    <atom:link href="http://coyled.com/rss.xml" rel="self" type="application/rss+xml" />
+    <description>stuff from coyled</description>
+    <pubDate>Tue, 07 Mar 2017 19:17:22 -0800</pubDate>
+    <lastBuildDate>Tue, 07 Mar 2017 19:17:22 -0800</lastBuildDate>
+
+    
+    <item>
+      <title>위키리스크의 CIA 도감청 이슈 공개(Valut7 Project)</title>
+      <link>/2017/03/08/wikileaks-cia-hacking-vault7.html</link>
+      <pubDate>Wed, 08 Mar 2017 00:00:00 -0800</pubDate>
+      <author>김동현</author>
+      <guid>/2017/03/08/wikileaks-cia-hacking-vault7</guid>
+      <description>&lt;p&gt;안녕하세요. i2sec의 김동현입니다.&lt;br /&gt;
+위키리스크에서 CIA의 도감청이슈에 대해 공개해, 정리해봤습니다.&lt;br /&gt;
+이번 글은 정리되는 포스트로 기술적 내용과는 조금 거리가 있습니다.&lt;br /&gt;
+위키리스크는 엄청 오랜만에 듣는 이름이네요 :)&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;개요&lt;/h3&gt;
+&lt;p&gt;Wikileaks는 Year Zero의 일환으로 Vault 7이란 첫 아카이브를 공개.&lt;br /&gt;
+* 전체크기는 513MB로  8,716건의 문서가 포함&lt;br /&gt;
+* iOS, Android, MS용으로 개발된 0-Day 포함&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;cias-0-day--encryption-bypass&quot;&gt;CIA’s 0-Day &amp;amp; Encryption bypass&lt;/h3&gt;
+&lt;p&gt;WhatsApp, Signal, Telegram, Weibo, Confide, Clockman의 암호화를 우회해 음성메세지 및 텍스트 메세지를 확인할 수 있다.&lt;br /&gt;
+* 암호화 우회 및 Decryption이 가능한 것으로 추정 됨.&lt;br /&gt;
+CIA는 NSA, GCHQ(영국의 정보기관) 또는 민간 익스플로잇 거래 업체, 파트너기관 등과 거래한 내역이 확인 되었다.&lt;br /&gt;
+스마트폰 해킹을 위한 0-Day와 악성코드를 개발한 정황이 확인되었다.&lt;br /&gt;
+16년까지 CIA해킹부서에 등록된 사용자는 5000명이 넘었고, 0-Day, 악성코드 및 Exploit Weapon 등이 확인 되었다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;weeping-angel-attack&quot;&gt;Weeping Angel Attack&lt;/h3&gt;
+&lt;p&gt;스마트 TV를 해킹 해 감청하는 프로젝트로, 스마트TV를 통해 대화를 녹음하고 CIA서버로 보내는 프로젝트&lt;br /&gt;
+* 이미 2013년도부터, 스마트 TV해킹은 이슈화 되어 있었다.&lt;br /&gt;
+* 이슈가 되었던 그 당시와 아키텍쳐를 많이 수정했다고 하지만…&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;cia--spy-applicaiton-&quot;&gt;CIA에서 도감청한 Spy Applicaiton 목록&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;VLC Player Portable&lt;/li&gt;
+  &lt;li&gt;Irfan View&lt;/li&gt;
+  &lt;li&gt;Chrome Portable&lt;/li&gt;
+  &lt;li&gt;Opera Portable&lt;/li&gt;
+  &lt;li&gt;Firefox Portable&lt;/li&gt;
+  &lt;li&gt;ClamWin Portable&lt;/li&gt;
+  &lt;li&gt;Kaspersky TDSS Killer Portable&lt;/li&gt;
+  &lt;li&gt;McAfee Stinger Portable&lt;/li&gt;
+  &lt;li&gt;Sophos Virus Removal&lt;/li&gt;
+  &lt;li&gt;Thunderbird Portable&lt;/li&gt;
+  &lt;li&gt;Opera Mail&lt;/li&gt;
+  &lt;li&gt;Foxit Reader&lt;/li&gt;
+  &lt;li&gt;Libre Office Portable&lt;/li&gt;
+  &lt;li&gt;Prezi&lt;/li&gt;
+  &lt;li&gt;Babel Pad&lt;/li&gt;
+  &lt;li&gt;Notepad++&lt;/li&gt;
+  &lt;li&gt;Skype&lt;/li&gt;
+  &lt;li&gt;Iperius Backup&lt;/li&gt;
+  &lt;li&gt;Sandisk Secure Access&lt;/li&gt;
+  &lt;li&gt;U3 Software&lt;/li&gt;
+  &lt;li&gt;2048&lt;/li&gt;
+  &lt;li&gt;LBreakout2&lt;/li&gt;
+  &lt;li&gt;7-Zip Portable&lt;/li&gt;
+  &lt;li&gt;Portable Linux CMD Prompt&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;valut7-&quot;&gt;Valut7 특이사항&lt;/h3&gt;
+&lt;p&gt;음성인식 기술을 도입한걸로 보임. &lt;br /&gt;
+Skype 음성 대화는 실시간으로 텍스트로 변환되고, 관심있는 내용을 스캔해 CIA 서버로 전송함&lt;br /&gt;
+* Breaking: Skype voice conversations are converted into text in real-time, scanned for contents of interest and stored in CIA spy cloud.&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;제 2의 프리즘 프로젝트?&lt;/h3&gt;
+&lt;p&gt;프리즘 프로젝트의 연장선으로 보임, 사실 위키리스크 측에서 ‘첫번째 공개’라고 했으니, 추가적인 공개가 얼만큼 될지 매우 ‘기대’되는 상황&lt;br /&gt;
+사실상 프리즘 프로젝트는 이러한 사실이 하나씩 나오며 종료됬다고 보기는 힘들어 보임.&lt;br /&gt;
+최근 개봉된 영화 또는 발간된 책 등 / 해외 기사 등을 종합해보면 무차별한 도 감청 또는 선별된 도 감청은 확실히 이루어지고 있다고 봐도 무방할 듯 싶음.
+&lt;br /&gt;
+### HammerDrill v2.0: A Malware to Steal Data From Air Gapped PCs
+MS, Linux, Solaris, MacOS를 타겟으로 한 악성코드(크로스플랫폼환경으로 개발된)&lt;br /&gt;
+망분리 환경을 타겟으로 했으며, 개발 중 테스트코드 완성도도 상당히 높아 보임&lt;br /&gt;
+* 특정 차량 해킹내용도 들어가 있으며, 탐지할 수 없는 살인(사고 위장)이 가능하다고 제안&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;cia-ios----&quot;&gt;CIA는 iOS 해킹 전담반 운영 중?&lt;/h3&gt;
+&lt;p&gt;iOS의 점유율은 14.5%정도입니다. 위키리스크는 CIA가 iOS해킹 전담반을 운영 중이라고 했는데요.&lt;br /&gt;
+그 이유는, “사회,정치,외교,비지니스, 엘리트 사회에서는 아이폰이 인기가 많다”는 이유였습니다.&lt;br /&gt;
+물론 안드로이드 폰 역시도 소프트웨어 공격형식의 침투가 가능하다고 말하고 있습니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;마무리하며&lt;/h3&gt;
+&lt;p&gt;Goverment에서 하는 정보기관/해킹/보안활동 등이 미치는 영향은 민간에 상당한듯 싶습니다.&lt;br /&gt;
+이러한 민간사찰 이슈는 일반인들에게 매우 가깝게 느껴질 수 밖에 없으며, 보안업계에서 일하는 저희 역시도 한번쯤은 더 생각해보게 되네요.&lt;br /&gt;
+기술을 좋아하는 입장으로, 해머드릴 프로젝트, 스파이 앱, Weeping Angel Attack 이런 프로젝트를 보면 CIA가 참 부럽다는 생각도 좀 드네요.&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wikileaks.org/ciav7p1/&quot;&gt;https://wikileaks.org/ciav7p1/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://file.wikileaks.org/torrent/WikiLeaks-Year-Zero-2017-v1.7z.torrent&quot;&gt;https://file.wikileaks.org/torrent/WikiLeaks-Year-Zero-2017-v1.7z.torrent&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://thehackernews.com/2017/03/wikileaks-cia-hacking-tool.html&quot;&gt;http://thehackernews.com/2017/03/wikileaks-cia-hacking-tool.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.bleepingcomputer.com/news/security/vault-7-cia-developed-24-decoy-applications-to-spy-on-targets/&quot;&gt;https://www.bleepingcomputer.com/news/security/vault-7-cia-developed-24-decoy-applications-to-spy-on-targets/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>i2sec 기술 블로그 오픈기</title>
+      <link>/2017/03/06/openblog.html</link>
+      <pubDate>Mon, 06 Mar 2017 00:00:00 -0800</pubDate>
+      <author>김동현</author>
+      <guid>/2017/03/06/openblog</guid>
+      <description>&lt;p&gt;안녕하세요. i2sec의 김동현입니다.
+내부기술성장을 위해 이래저래 열심히 하고 있지만, 이제서야 발판인 블로그를 오픈하게 됬네요.
+본 글에서는 github.io로 이전하게 된 계기와 여러가지 잡담 및 포스팅 방향에 대해 서술합니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;블로그 오픈해보자&lt;/h3&gt;
+&lt;p&gt;사실 저는 개인 블로그 운영기간은 매우 길었습니다. 2012년에서 14년도까지는 네이버 블로그,
+그 이후에는 &lt;a href=&quot;http://hackpupu.tistory.com&quot;&gt;Tistory 블로그&lt;/a&gt;, 마지막으로 최근 &lt;a href=&quot;https://hackpupu.github.io&quot;&gt;github 블로그&lt;/a&gt;까지 매우 다양한 플랫폼을 이용해 보았습니다.
+Wordpress기반으로 회사 블로그를 만들었다가 한달만에 빠르게 삭제한 경험도 있구요.
+플랫폼마다 검색엔진에서의 유입량이 다르고, 유입타겟 등이 다 달랐습니다.
+회사 블로그를 운영하려고 하니 여러가지 신경쓸 내용이 많더군요. 이래저래 지체되고 있다가 최근 한 계기로 인해 제대로 운영해 보려 합니다.
+(곤 CEO가 많이 쪼았어요. 내부 기술공유만 하지말고 외부에도 좋은내용 알리라고…ㅠㅠ)&lt;/p&gt;
+
+&lt;h3 id=&quot;githubio&quot;&gt;왜 Github.io로?&lt;/h3&gt;
+&lt;p&gt;저는 참 개발하는걸 좋아합니다. 지금도 여러가지 개인/팀 프로젝트를 하고 있구요.
+최근 필수적으로 사용하는게 Github 프로젝트인데요. 최근에서야 github.io 서비스를 알게 되었습니다.
+그래서, 제가 직접 한번 만들어 보고 (&lt;a href=&quot;https://hackpupu.github.io&quot;&gt;예제&lt;/a&gt;) 아래와 같은 이유로 선택하게 되었습니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;우선, 도메인 값이 전혀 들지 않습니다. (좀 장기적인 서비스는 도메인서비스를 고려해야되는데 참 좋더군요.)&lt;/li&gt;
+  &lt;li&gt;원하는 기능은 직접 개발해 넣을 수 있습니다. (블로그 서비스와는 느낌이 많이 달랐습니다.)&lt;/li&gt;
+  &lt;li&gt;포스팅의 버젼관리를 아주 편하게 할 수 있습니다.&lt;/li&gt;
+  &lt;li&gt;구글검색유입량이 상당히 잘 됩니다.&lt;/li&gt;
+  &lt;li&gt;MD문법으로 한번만 작성해보면 손에 아주 잘 익습니다. (마우스 클릭 싫어하면 적응이 참 편합니다.)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;위 이유로 github.io를 선택하게 되었고, 제가 메인 매니지먼트를 맡아 운영할 예정입니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;어떤 포스트가 작성되는가?&lt;/h3&gt;
+&lt;p&gt;우선 저희는 현재 정보보안 컨설팅 및 교육을 메인사업으로 하고 있습니다.
+사업분야에 맞는 내부 연구원들의 연구결과 및 공부결과를 블로그 글에 적으려고 합니다.
+아래와 같은 주기로 글이 작성 됩니다.
+- 장기교육생들의 Best Project TOP 3
+- 내부 연구원들의 단기/중기/장기 프로젝트
+- 정보보안 Hot Issue 정리
+- 실무 정보보안컨설팅 중 흥미로운 사례(고객사 명 및 주요자산은 비공개)
+- 0-Day 분석 글, 국내외 보안 통계 등 등 ..
+- IT관련 모든 기술(빅데이터, 머신러닝, 딥러닝, AI…)
+대부분의 기술적 주제를 다룬다고 생각하시면 될 것 같아요.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;마무리&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://i2sec.co.kr&quot;&gt;i2sec&lt;/a&gt;블로그는 이제 시작합니다.
+주변에 관심있는 분들이 많은 만큼, 조언도 많이 해주시고 칭찬도 많이 해주시면 좋겠습니다.
+좋은 정보를 알리고, 공유에 앞장서는 i2sec 해킹팀이 되겠습니다.
+감사합니다.&lt;/p&gt;
+
+</description>
+    </item>
+    
+
+  </channel>
+</rss>
