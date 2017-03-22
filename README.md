@@ -46,6 +46,12 @@
 - 규칙: 년도-달-날짜-포스팅이름.md
 - ex) 2017-03-22-blog_post_edit.md
 
+6. DEVELOP BRACNH로 푸쉬
+- git add *
+- 또는 git add '업데이트된 포스트 파일 명(상대경로)'
+- git commit -m "업데이트 설명"
+- git push -u origin develop
+
 ## 블로그 글 상단에 아래와 같은 규칙으로 있어야함
 layout: entry <br>
 title: 글제목 <br>
