@@ -52,6 +52,14 @@
 - git commit -m "업데이트 설명"
 - git push -u origin develop
 
+## 이미지 첨부 방법
+- 이미지위치: images/년도-월-일/ 내 이미지 삽입
+- ex) images/2017-03-22/fig_1.png
+- 포스트내에서 사용할 수 있는 방법은 아래와 같습니다.
+```
+![이미지설명](이미지경로)
+![샘플이미지](/images/2016-03-22/fig_1.png)
+```
 ## 블로그 글 상단에 아래와 같은 규칙으로 있어야함
 layout: entry <br>
 title: 글제목 <br>
