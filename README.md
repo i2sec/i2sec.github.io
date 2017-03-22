@@ -1,4 +1,4 @@
-# Spoqa development blog
+# i2sec tech blog
 
 ## Requirements (for testing)
 
