@@ -1,16 +1,16 @@
 ---
 layout: entry
-title: 위키리스크의 CIA 도감청 이슈 공개(Valut7 Project)
+title: 위키리크스의 CIA 도감청 이슈 공개(Valut7 Project)
 author: 김동현
 author-email: kdh@i2sec.co.kr
-description: 위키리스크의 CIA 도감청 이슈 공개(Valut7 Project) 정리 글
+description: 위키리크스의 CIA 도감청 이슈 공개(Valut7 Project) 정리 글
 publish: true
 ---
 
 안녕하세요. i2sec의 김동현입니다.<br>
-위키리스크에서 CIA의 도감청이슈에 대해 공개해, 정리해봤습니다.<br>
+위키리크스에서 CIA의 도감청이슈에 대해 공개해, 정리해봤습니다.<br>
 이번 글은 정리되는 포스트로 기술적 내용과는 조금 거리가 있습니다.<br>
-위키리스크는 엄청 오랜만에 듣는 이름이네요 :)<br>
+위키리크스는 엄청 오랜만에 듣는 이름이네요 :)<br>
 
 ### 개요
 Wikileaks는 Year Zero의 일환으로 Vault 7이란 첫 아카이브를 공개.<br>
@@ -61,7 +61,7 @@ Skype 음성 대화는 실시간으로 텍스트로 변환되고, 관심있는 �
 * Breaking: Skype voice conversations are converted into text in real-time, scanned for contents of interest and stored in CIA spy cloud.<br>
 
 ### 제 2의 프리즘 프로젝트?
-프리즘 프로젝트의 연장선으로 보임, 사실 위키리스크 측에서 '첫번째 공개'라고 했으니, 추가적인 공개가 얼만큼 될지 매우 '기대'되는 상황<br>
+프리즘 프로젝트의 연장선으로 보임, 사실 위키리크스 측에서 '첫번째 공개'라고 했으니, 추가적인 공개가 얼만큼 될지 매우 '기대'되는 상황<br>
 사실상 프리즘 프로젝트는 이러한 사실이 하나씩 나오며 종료됬다고 보기는 힘들어 보임.<br>
 최근 개봉된 영화 또는 발간된 책 등 / 해외 기사 등을 종합해보면 무차별한 도 감청 또는 선별된 도 감청은 확실히 이루어지고 있다고 봐도 무방할 듯 싶음.
 <br>
@@ -71,7 +71,7 @@ MS, Linux, Solaris, MacOS를 타겟으로 한 악성코드(크로스플랫폼환
 * 특정 차량 해킹내용도 들어가 있으며, 탐지할 수 없는 살인(사고 위장)이 가능하다고 제안<br>
 
 ### CIA는 iOS 해킹 전담반 운영 중?
-iOS의 점유율은 14.5%정도입니다. 위키리스크는 CIA가 iOS해킹 전담반을 운영 중이라고 했는데요.<br>
+iOS의 점유율은 14.5%정도입니다. 위키리크스는 CIA가 iOS해킹 전담반을 운영 중이라고 했는데요.<br>
 그 이유는, "사회,정치,외교,비지니스, 엘리트 사회에서는 아이폰이 인기가 많다"는 이유였습니다.<br>
 물론 안드로이드 폰 역시도 소프트웨어 공격형식의 침투가 가능하다고 말하고 있습니다.<br>
 
