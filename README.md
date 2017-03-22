@@ -29,7 +29,7 @@
 
 ## Tutorial
 1. Github 계정생성 / 사용하기
-https://git-scm.com/book/ko/v2/GitHub-%EA%B3%84%EC%A0%95-%EB%A7%8C%EB%93%A4%EA%B3%A0-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0
+- https://git-scm.com/book/ko/v2/GitHub-%EA%B3%84%EC%A0%95-%EB%A7%8C%EB%93%A4%EA%B3%A0-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0
 
 
 2. 계정생성후, 가입한 이메일 벤에게 다이렉트메세지로 알려주기(블로그 관련)
@@ -38,24 +38,21 @@ https://git-scm.com/book/ko/v2/GitHub-%EA%B3%84%EC%A0%95-%EB%A7%8C%EB%93%A4%EA%B
 
 
 4. jekyll serve 로 로컬에서 깃 돌리기
-http://jekyllrb-ko.github.io/docs/usage/
+- http://jekyllrb-ko.github.io/docs/usage/
 
 5. MD문법으로 블로그 글 작성하기
+- https://teragoon.wordpress.com/2012/04/04/github%EC%97%90%EC%84%9C-readmemd-%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0markdown-%EB%AC%B8%EB%B2%95/
+- 작성위치: _posts/ 에 블로그 글 작성
+- 규칙: 년도-달-날짜-포스팅이름.md
+- ex) 2017-03-22-blog_post_edit.md
 
-https://teragoon.wordpress.com/2012/04/04/github%EC%97%90%EC%84%9C-readmemd-%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0markdown-%EB%AC%B8%EB%B2%95/
-작성위치: _posts/ 에 블로그 글 작성
-규칙: 년도-달-날짜-포스팅이름.md
-ex) 2017-03-22-blog_post_edit.md
-
-블로그 글 상단에 아래와 같은 규칙으로 있어야함
----
-layout: entry
-title: 글제목
-author: 작성자이름(김동현, 문경곤, 박용운, 이창영)
-author-email: 작성자이메일(kdh@i2sec.co.kr, abc@i2sec.co.kr, asdf@i2sec.co.kry, lcy@i2sec.co.kr)
-description: 글설명
-publish: true
----
+## 블로그 글 상단에 아래와 같은 규칙으로 있어야함
+layout: entry <br>
+title: 글제목 <br>
+author: 작성자이름(김동현, 문경곤, 박용운, 이창영) <br>
+author-email: 작성자이메일(kdh@i2sec.co.kr, abc@i2sec.co.kr, asdf@i2sec.co.kry, lcy@i2sec.co.kr) <br>
+description: 글설명 <br>
+publish: true <br>
 
 
   [Jekyll]: http://jekyllrb.com
