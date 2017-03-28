@@ -1,5 +1,5 @@
-
-yout: entry
+---
+layout: entry
 title: 검증되지 않은 리다이렉트 및 포워드
 author: 박용운
 author-email: asdf@i2sec.co.kr
@@ -137,11 +137,11 @@ http://www.example.com/function.jsp?fwd=admin.jsp
 ![redirect&forward](/images/2017-03-28/2.png)
 
 
-##Forward
+### Forward
 
 Web Container 차원에서 페이지 이동만 있다. 실제로 웹 브라우저는 다른 페이지로 이동했음을 알 수 없다. 그렇기 때문에, 웹 브라우저에는 최초에 호출한 URL이 표시되고 이동한 페이지의 URL 정보는 볼수 없다. 동일한 웹 컨테이너에 있는 페이지로만 이동할수 있다. 현재 실행중인 페이지와 Forward에 의해 호출될 페이지는 request와 response 객체를 공유한다.
 
-##Redirect
+### Redirect
 
 Web Container 는 Redirect 명령이 들어오면 웹 브라우저에게 다른 페이지로 이동하라고 명령을 내린다. 
 그러면 웹 브라우저는 URL을 지시된 주소로 바꾸고 그 주소로 이동한다. 다른 웹 컨테이너에 있는 주소로 이동이 가능하다. 
@@ -152,6 +152,8 @@ Web Container 는 Redirect 명령이 들어오면 웹 브라우저에게 다른 
 
 http://forum.spring.io/forum/spring-projects/security/1672-jsp-forward-bypasses-acegi
 
+
+
 해당 블로그의 핵심은 내용은 바로 이것이다.
 
 ```
@@ -161,6 +163,7 @@ Security constraints only work on the original request URI, not on calls made vi
 ```
 보안 제약 조건은 RequestDispatcher (<jsp : include> 및 <jsp : forward> 포함)를 통한 호출이 아니라 원래 요청 URI에서만 작동합니다. 
 ```
+
 
 검증되지 않은 포워드의 발생원인은 바로 Include 또는 forward시 보안 제약 조건이 동작하지 않으므로 발생하는 것이다. 
 
@@ -179,7 +182,8 @@ Security constraints only work on the original request URI, not on calls made vi
 떡밥을 남겨두고 떠난다.
 
 
-###2탄 리스트
+
+### 2탄 리스트
 
 1. 1탄을 이어서 취약점 구현해보기
 
@@ -195,7 +199,10 @@ Security constraints only work on the original request URI, not on calls made vi
 끝까지 읽어줘서 고맙다. :D
 
 
+## 출처
 
+https://www.owasp.org/images/2/2c/OWASP_Top_10_-_2013_Final_-_Korean.pdf
+http://cocomo.tistory.com/95
 
 
 
