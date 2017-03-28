@@ -157,11 +157,15 @@ http://forum.spring.io/forum/spring-projects/security/1672-jsp-forward-bypasses-
 해당 블로그의 핵심은 내용은 바로 이것이다.
 
 ```
+
 Security constraints only work on the original request URI, not on calls made via a RequestDispatcher (which include <jsp:include> and <jsp:forward>).
+
 ```
 
 ```
+
 보안 제약 조건은 RequestDispatcher (<jsp : include> 및 <jsp : forward> 포함)를 통한 호출이 아니라 원래 요청 URI에서만 작동합니다.
+
 ```
 
 
