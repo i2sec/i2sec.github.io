@@ -56,6 +56,11 @@
       width: calc(100% - 42px);
     }
   }
+  img{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+  }
   ol li ul,
   ol li ol,
   ul li ul,
