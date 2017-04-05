@@ -1,0 +1,390 @@
+<!doctype html>
+<!--[if lt ie 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if ie 7]>         <html class="lt-ie9 lt-ie8 ie7"> <![endif]-->
+<!--[if ie 8]>         <html class="lt-ie9 ie8"> <![endif]-->
+<!--[if gt ie 8]><!-->
+<html class=""><!--<![endif]-->
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>i2sec 기술 블로그 | 검증되지 않은 리다이렉트 및 포워드</title>
+  <meta name="description" content="포워드 취약점의 원리는 무엇인가?">
+  <link rel="canonical" href="https://i2sec.github.io/2017/03/30/owasp_top_10_forward.html">
+
+  <!-- OpenGraph meta tags -->
+  <meta property="og:title" content="검증되지 않은 리다이렉트 및 포워드">
+  <meta property="og:url" content="https://i2sec.github.io/2017/03/30/owasp_top_10_forward.html">
+  <meta property="og:site_name" content="i2sec 기술 블로그">
+  <meta property="og:description" content="포워드 취약점의 원리는 무엇인가?">
+  
+    <meta property="og:type" content="article">
+  
+  
+    <meta property="og:image" content="https://i2sec.github.io/images/og-logo.png">
+  
+
+  <!-- Twitter card meta tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@spoqa">
+  <meta name="twitter:title" content="검증되지 않은 리다이렉트 및 포워드">
+  <meta name="twitter:description" content="포워드 취약점의 원리는 무엇인가?">
+  
+    <meta name="twitter:image" content="https://i2sec.github.io/images/twitter-card.png">
+  
+
+  <script>
+    window.WebFontConfig = {
+        custom: {
+            families: ['Spoqa Han Sans:100,300,400,700'],
+            urls: ['https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css']
+        },
+        timeout: 60000
+    };
+    (function(d) {
+        var wf = d.createElement('script'), s = d.scripts[0];
+        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js';
+        s.parentNode.insertBefore(wf, s);
+    })(document);
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-36136046-5', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="i2sec 기술 블로그">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  <style type="text/css">
+    @media only screen and (max-width: 580px) {
+      .btn-job {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="header">
+      <div class="header-item">
+        <div class="spoqa-logo-wrap">
+          <a class="spoqa-logo" href="/"><img src="/images/logo.png" alt="i2sec logo"></a>
+          <a class="blog-title" href="/">기술 블로그</a>
+        </div>
+        <div class="nav">
+          <input type="checkbox" id="toggle">
+          <label for="toggle" class="toggle" onclick></label>
+          <ul class="menu">
+            <li><a class="
+               menu-about" href="/about.html">소개</a></li>
+            <li><a class="
+              
+              selected
+               menu-blog" href="/index.html">블로그</a></li>
+            <li><a class="menu-github" href="https://github.com/i2sec">GitHub</a></li>
+            
+            <li><a class="
+               menu-job" href="/jobs.html">채용정보</a></li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--<div class="hiring-banner">
+      <div class="hiring-fixedwidth-wrap">
+        <div class="hiring-content">
+          <h2 class="hiring-title">당신과 함께<br> 일하고 싶습니다.</h2>
+          <div class="hiring-subtitle">스포카에서 배우고 성장하면서, <br>서비스와 제품을 함께 만들어 나갈 <br>크리에이터를 모집합니다.</div>
+          <a class="btn-job" type="button" href="/jobs.html">채용 공고 보기</a>
+        </div>
+      </div>
+    </div>-->
+    <div class="content">
+      
+
+
+<div class="post-author-info">
+  
+    <img class="portrait" src="../../../images/profile/asdf@i2sec.co.kr.png" />
+    <h1 class="post-title">검증되지 않은 리다이렉트 및 포워드</h1>
+    <span class="post-date">2017년 03월 30일</span>
+    <span class="sep">|</span>
+    <span class="author-name"><a href="mailto:asdf@i2sec.co.kr">박용운</a></span>
+  
+</div>
+
+
+
+  <div class="post"><h3 id="section">시작하며.</h3>
+
+<p>현업 컨설턴트 중 “A10 검증되지 않은 리다이렉트 및 포워드” 취약점 항목을 모르는 사람은 없을것이라 생각한다. 리다이렉트에 관한 자료는 많지만 포워드에 대한 예시가 없어 해당 문서를 작성한다. 즉, 해당 문서의 핵심은 리다이렉트가 아닌 포워드이다.</p>
+
+<p><img src="/images/2017-03-30/1.png" alt="owasp" /></p>
+
+<p>위 “OWASP Top 10 한글 설명서” 요약 페이지의 마지막에 나와있듯이 취약점 분포가 드물고, 탐지 가능성 쉬움으로 평가가 되어 있는 취약점이다.</p>
+
+<p>현업 컨설턴트인 저자의 입장에서 기술적 측면으로 관심이 높지 않았다. 기술적으로 탐지하기 편하기 때문이다. 파라메타에 application명 이나 도메인 주소가 포함되어 있는지 육안으로 구분이 되기 때문에 선 분석, 후 공격이 가능하기 때문이다.</p>
+
+<p>“검증되지 않은 리다이렉트 및 포워드” 취약점 항목을 굳이 세분화 하자면 2가지라 생각한다.</p>
+
+<ol>
+  <li>검증되지 않은 리다이렉트</li>
+  <li>검증되지 않은 포워드</li>
+</ol>
+
+<p>첫째, 검증되지 않은 리다이렉트 취약점은 이미 수 많은 예시 코드들이 나와있고 취약점이 직관적이라 충분히 이해를 할 수 있다.</p>
+
+<h3 id="url---">안전한 URL 리다이렉트 예시 코드</h3>
+
+<p>Java
+<code class="highlighter-rouge">
+response.sendRedirect("http://www.mysite.com");
+</code></p>
+
+<p>PHP
+<code class="highlighter-rouge">&lt;?php
+ /* Redirect browser */
+ header("Location: http://www.mysite.com/");
+ ?&gt;
+</code></p>
+
+<p>ASP.NET
+<code class="highlighter-rouge">
+Response.Redirect("~/folder/Login.aspx")
+</code></p>
+
+<p>Rails
+<code class="highlighter-rouge">
+redirect_to login_path
+</code></p>
+
+<h3 id="url----1">취약한 URL 리다이렉트 예시 코드</h3>
+
+<p>Java
+<code class="highlighter-rouge">
+response.sendRedirect(request.getParameter("url"));
+</code></p>
+
+<p>PHP
+<code class="highlighter-rouge">
+$redirect_url = $_GET['url'];
+ header("Location: " . $redirect_url);
+</code></p>
+
+<p>C#
+<code class="highlighter-rouge">
+string url = request.QueryString["url"];
+ Response.Redirect(url);
+</code></p>
+
+<p>Rails
+<code class="highlighter-rouge">
+redirect_to params[:url]
+</code></p>
+
+<h3 id="exploit-">Exploit 예시</h3>
+<div class="highlighter-rouge"><pre class="highlight"><code>http://example.com/example.php?url=http://malicious.example.com
+</code></pre>
+</div>
+
+<p>매우 심플하다. 사용자가 넘겨준 매개변수로 각 언어별로 리다이렉트 처리시 취약점이 발생하여 악의적 URL로 렌더링 될 수 있다는 것이다.</p>
+
+<p>둘째, 검증되지 않은 포워드 취약점의 예시 코드를 먼저 살펴 보겠다. 유일한 형태의 예시라 보면된다.</p>
+
+<h3 id="section-1">검증되지 않은 포워드 예시 코드</h3>
+<div class="highlighter-rouge"><pre class="highlight"><code>public class ForwardServlet extends HttpServlet
+{
+  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    String query = request.getQueryString();
+    if (query.contains("fwd"))
+    {
+      String fwd = request.getParameter("fwd");
+      try
+      {
+        request.getRequestDispatcher(fwd).forward(request, response);
+      }
+      catch (ServletException e)
+      {
+        e.printStackTrace();
+      }
+    }
+  }
+}
+</code></pre>
+</div>
+
+<p>여기서부터 궁금증이 생겼다.</p>
+
+<p>리다이렉트와 같이 사용자에게 전달받은 값으로 포워딩을 해서 발생한다는 취약점의 예시로는 맞다고 본다.</p>
+
+<p>하지만 리다이렉트와 포워딩의 차이만으로 이러한 취약점이 어떻게 발생하는지 시원하게 풀리지 않았다.</p>
+
+<p>가장 근본적인 나의 궁금증은 이러했다.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>http://www.example.com/admin.jsp
+</code></pre>
+</div>
+
+<p>위와 같은 요청시 관리자 메뉴 페이지가 접근이 되고 제어가 가능하다면 이 취약점은 “URL 강제요청”, “URL Jumping”, “A7 접근통제 누락” 과 같은 취약점이 되겠지만, 지금과 같은 상황에서는 당연히 “접근 권한이 없습니다.”를 출력한다는 것이고, 아래와 같은 포워딩 어플리케이션을 이용할 경우 접근제어 우회가 된다라고 익히 알려져있다.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>http://www.example.com/function.jsp?fwd=admin.jsp
+</code></pre>
+</div>
+
+<p>그렇다면 “접근제어가 우회된다.” 라는 의미는 접근제어를 하지 않는다라는 표현이 아닌 접근제어가 있지만 통과 된다라는 말이다.</p>
+
+<p>자 그렇다면 웹의 포워딩이라는 기술이 어떻게 동작이 되었기에 접근제어가 우회가 가능한지 생각해보았다. 이 궁금증을 풀기 위해서는 리다이렉트와 포워딩을 비교가 필요했다.</p>
+
+<p><img src="/images/2017-03-30/2.png" alt="redirect&amp;forward" /></p>
+
+<h3 id="forward">Forward</h3>
+
+<p>Web Container 차원에서 페이지 이동만 있다. 실제로 웹 브라우저는 다른 페이지로 이동했음을 알 수 없다. 그렇기 때문에, 웹 브라우저에는 최초에 호출한 URL이 표시되고 이동한 페이지의 URL 정보는 볼수 없다. 동일한 웹 컨테이너에 있는 페이지로만 이동할수 있다. 현재 실행중인 페이지와 Forward에 의해 호출될 페이지는 request와 response 객체를 공유한다.</p>
+
+<h3 id="redirect">Redirect</h3>
+
+<p>Web Container 는 Redirect 명령이 들어오면 웹 브라우저에게 다른 페이지로 이동하라고 명령을 내린다.
+그러면 웹 브라우저는 URL을 지시된 주소로 바꾸고 그 주소로 이동한다. 다른 웹 컨테이너에 있는 주소로 이동이 가능하다.
+새로운 페이지에서는 request 와 response 객체가 새롭게 생성된다.</p>
+
+<p>역시는 역시인가 OTL. 아주 새로운 측면의 원하는(?) 내용은 없었다. 풀리지 않았다. 오랜시간 구글여행을 통해 가장 근접한 유일한 답변을 찾았다.</p>
+
+<p>http://forum.spring.io/forum/spring-projects/security/1672-jsp-forward-bypasses-acegi</p>
+
+<p>해당 블로그의 핵심은 내용은 바로 이것이다.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+Security constraints only work on the original request URI, not on calls made via a RequestDispatcher (which include &lt;jsp:include&gt; and &lt;jsp:forward&gt;).
+
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+보안 제약 조건은 RequestDispatcher (&lt;jsp : include&gt; 및 &lt;jsp : forward&gt; 포함)를 통한 호출이 아니라 원래 요청 URI에서만 작동합니다.
+
+</code></pre>
+</div>
+
+<p>검증되지 않은 포워드의 발생원인은 바로 Include 또는 forward시 보안 제약 조건이 동작하지 않으므로 발생하는 것이다.</p>
+
+<p>여기서 말하는 보안 제약 조건이라 함은 1990년대 초창기 acegi 라고 불리는 보안 서비스 프로젝트가 이름이 변경되어 지금의 Spring Security를 부른다.</p>
+
+<p>스프링 시큐리티(Spring Security)는 스프링 서브 프로젝트 중 하나로 스프링 기반의 어플리케이션을 보호하기 위한 필수적인 프레임워크이다.</p>
+
+<h3 id="section-2">끝내며</h3>
+<p>즉 Spring Security의 보안필터가 보안 제약 조건이 성립이 되지 않아 동작되지 않으므로 접근제어가 우회가 되는 것이 이 취약점의 핵심이다.</p>
+
+<p>마지막으로 현재 저자의 결론은 자바 플랫폼에서만 국한적으로 발생하는 취약점이라 생각한다. 억지로 구현해낸 취약점이 아니고서는 말이다.</p>
+
+<p>현업 컨설턴트 분들에게 도움이 되었으면 한다.</p>
+
+<p>1탄은 여기서 마무리하겠다. 2탄은 더욱 어그로를 끌 수 있는 무언가를 준비하겠다.</p>
+
+<p>떡밥을 남겨두고 떠난다.</p>
+
+<h3 id="section-3">2탄 리스트</h3>
+
+<ol>
+  <li>
+    <p>1탄을 이어서 취약점 구현해보기</p>
+  </li>
+  <li>
+    <p>Javascript Drive by Download with ransomware 최신 동향 및 실시간 샘플 수집&amp;분석</p>
+  </li>
+  <li>
+    <p>APT 신호탄 : 피싱 메일 악성코드 제작(백신 탐지 zero)</p>
+  </li>
+</ol>
+
+<p>댓글에 관심도를 반영하겠다.</p>
+
+<p>끝까지 읽어줘서 고맙다. :D</p>
+
+<h2 id="section-4">출처</h2>
+
+<p>https://www.owasp.org/images/2/2c/OWASP_Top_10_-<em>2013_Final</em>-_Korean.pdf</p>
+
+<p>http://cocomo.tistory.com/95</p>
+</div>
+
+
+<div class="post-footer">
+  <div class="back-btn"><a href="/">목록으로 돌아가기</a></div>
+  <div class="fb-like" data-href="https://i2sec.github.io/2017/03/30/owasp_top_10_forward.html" data-layout="button_count" data-width="" data-share="false" data-show-faces="false"></div>
+  <div class="fb-comments" data-href="https://i2sec.github.io/2017/03/30/owasp_top_10_forward.html" data-num-posts="5" data-width=""></div>
+  <div id="fb-root"></div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+    $('.fb-like, .fb-comments').attr('data-width', "100%");
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/ko_KR/all.js#xfbml=1&appId=207542736008055";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+});
+</script>
+<style>
+.hiring-banner {
+  height: 320px;
+  background-position-y: 80%;
+}
+.hiring-subtitle
+{
+  display: none;
+}
+.btn-job{
+  margin-top: 4px;
+}
+@media only screen and (max-width: 360px) {
+  .hiring-banner {
+    height: 220px;
+  }
+}
+}
+</style>
+
+    </div>
+    <div class="push">
+    </div>
+    <div class="footer">
+      <div id="info">
+        <span>© <a href="http://i2sec.co.kr/">i2sec</a> Inc. All rights reserved.</span>
+        <span>Powered by <a href="https://pages.github.com/">GitHub Pages</a>.</span>
+      </div>
+    </div>
+  </div>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="/js/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+    $(function() {
+      $('.hiring-banner').bind("click", function() {
+        location.href = '/jobs.html';
+      });
+      $('.toggle').bind("touchstart", function() {
+        $('.menu').toggle();
+      })
+    });
+  </script>
+  <!-- Responsive layout polyfill for IE8 and lower -->
+  <!--[if lte IE 8]>
+  <script>
+    var config = {
+        mobileResponsiveBreakpoint: 650
+    };
+    $(window).on('resize', function(){
+        if ($(window).width() <= config.mobileResponsiveBreakpoint) {
+           !$(document.body).hasClass('res-mobile')) {
+            $(document.body).addClass('res-mobile');
+        } else {
+            $(document.body).removeClass('res-mobile');
+        }
+    }).trigger('resize');
+  </script>
+  <![endif]-->
+</body>
+</html>
